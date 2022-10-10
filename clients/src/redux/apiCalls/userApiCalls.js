@@ -17,7 +17,7 @@ import {
 export const loadUser = async (dispatch) => {
   dispatch(loadUserRequest());
   try {
-    const res = await AxiosInstance.get("/api/v1/me");
+    const res = await axios.get("/api/v1/me");
 
     dispatch(loadUserSuccess(res.data));
   } catch (error) {
@@ -28,7 +28,7 @@ export const loadUser = async (dispatch) => {
 export const registerUser = async (user, dispatch) => {
   dispatch(regUserRequest());
   try {
-    const res = await AxiosInstance.post("/api/v1/create", user);
+    const res = await axios.post("/api/v1/create", user);
 
     dispatch(regUserSuccess(res.data));
   } catch (error) {
@@ -38,7 +38,7 @@ export const registerUser = async (user, dispatch) => {
 export const loginUser = async (user, dispatch) => {
   dispatch(loginUserRequest());
   try {
-    const res = await AxiosInstance.post("/api/v1/login", user);
+    const res = await axios.post("/api/v1/login", user);
 
     dispatch(loginUserSuccess(res.data));
   } catch (error) {
@@ -48,7 +48,7 @@ export const loginUser = async (user, dispatch) => {
 export const forgotPassword = async (user, dispatch) => {
   dispatch(loginUserRequest());
   try {
-    const res = await AxiosInstance.post("/api/v1//password/forgot", user);
+    const res = await axios.post("/api/v1//password/forgot", user);
 
     dispatch(loginUserSuccess(res.data));
   } catch (error) {
@@ -58,7 +58,7 @@ export const forgotPassword = async (user, dispatch) => {
 export const logout = async (user, dispatch) => {
   dispatch(loginUserRequest());
   try {
-    const res = await AxiosInstance.post("/api/v1/login", user);
+    const res = await axios.post("/api/v1/login", user);
 
     dispatch(loginUserSuccess(res.data));
   } catch (error) {

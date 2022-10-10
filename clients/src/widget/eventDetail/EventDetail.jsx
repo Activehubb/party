@@ -1,7 +1,6 @@
 import React from "react";
 import { IoImagesOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
-import Video from "../../utils/Video";
 
 const EventDetail = ({
   handleChange,

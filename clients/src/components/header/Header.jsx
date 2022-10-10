@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import partymode from "../../assets/partymode.svg";
-// import "./header.scss";
+import "./header.scss";
 import { headerOne, headerTwo } from "../../widget/headerList";
 import { Link, Outlet } from "react-router-dom";
 import { useSelector } from "react-redux";

@@ -10,7 +10,7 @@ import CreateEvent from "./page/CreateEvent";
 import Login from "./page/Login";
 import Register from "./page/Register";
 import { loadUser } from "./redux/apiCalls/userApiCalls";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import ForgotPassword from "./page/ForgotPassword";
 
 function App() {

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Event from "../../widget/event/Events";
-// import "./event.scss";
+import "./event.scss";
 import { Map } from "../../utils/Map";
 import { getEvents } from "../../redux/apiCalls/eventApiCalls";
 import { useSelector, useDispatch } from "react-redux";

@@ -80,6 +80,7 @@ const Register = () => {
                 <button className="flex w-full justify-center rounded-3xl border-none font-roboto bg-white p-1 text-black hover:bg-orange-600 hover:text-white sm:p-2">
                   <img
                     src="https://freesvg.org/img/1534129544.png"
+                    alt="registerImage"
                     className="mr-2 w-6 object-fill"
                   />
                   Create account with Google

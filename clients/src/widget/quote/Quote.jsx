@@ -11,7 +11,7 @@ import { MdOutlineHealthAndSafety } from "react-icons/md";
 import { SiYourtraveldottv } from "react-icons/si";
 import { BiDrink } from "react-icons/bi";
 import { quoteList } from "../headerList";
-// import "./quote.scss";
+import "./quote.scss";
 
 const Quote = () => {
   // const [location, setLocation] = useState("");

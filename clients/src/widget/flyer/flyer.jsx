@@ -1,6 +1,6 @@
 import React from "react";
 import flyer from "../../assets/flyer.jpg";
-// import "./flyer.scss";
+import "./flyer.scss";
 
 const Flyer = () => {
   return (

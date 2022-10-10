@@ -49,6 +49,7 @@ const Login = () => {
               <button class="flex w-full justify-center rounded-3xl border-none font-roboto bg-white p-1 text-black hover:bg-orange-600 hover:text-white sm:p-2">
                 <img
                   src="https://freesvg.org/img/1534129544.png"
+                  alt="login"
                   class="mr-2 w-6 object-fill"
                 />
                 Create account with Google
@@ -147,6 +148,7 @@ const Login = () => {
         <div class="h-screen w-1/2 bg-blue-600 hidden lg:block">
           <img
             src="https://images.pexels.com/photos/2523959/pexels-photo-2523959.jpeg"
+            alt="loginImage"
             class="h-full w-full"
           />
         </div>
