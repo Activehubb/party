@@ -33,15 +33,7 @@
     "morgan": "^1.10.0",
     "validator": "^13.7.0"
   },
-  "cacheDirectories": [
-    "node_modules",
-    "frontend/node_modules"
-  ],
   "devDependencies": {
     "nodemon": "^2.0.19"
-  },
-  "engines": {
-    "npm": ">=7.0.0",
-    "node": ">=16.0.0"
   }
 }
