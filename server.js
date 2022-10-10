@@ -38,10 +38,10 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-app.use(express.static(path.join(__dirname, "/frontend/build")));
+app.use(express.static(path.join(__dirname, "/clients/build")));
 
 app.get("*", (req, res) =>
-  res.sendFile(path.join(__dirname, "/frontend/build", "index.html"))
+  res.sendFile(path.join(__dirname, "/clients/build", "index.html"))
 );
 
 const server = app.listen(PORT, () => {
