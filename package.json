@@ -9,7 +9,7 @@
     "dev": "SET NODE_ENV=DEVELOPMENT& nodemon server.js",
     "prod": "SET NODE_ENV=PRODUCTION& nodemon server.js",
     "build": "cd clients && npm run build",
-    "install-client": "cd clients && npm install",
+    "install-client": "cd clients && npm install --legacy-peer-deps",
     "heroku-postbuild": "npm run install-client && npm run build"
   },
   "keywords": [],
