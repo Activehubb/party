@@ -5,11 +5,11 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "frontend": "npm start --prefix frontend",
+    "client": "npm start --prefix clients",
     "dev": "SET NODE_ENV=DEVELOPMENT& nodemon server.js",
     "prod": "SET NODE_ENV=PRODUCTION& nodemon server.js",
-    "build": "cd frontend && npm run build",
-    "install-client": "cd frontend && npm install --only=dev",
+    "build": "cd clients && npm run build",
+    "install-client": "cd clients && npm install",
     "heroku-postbuild": "npm run install-client && npm run build"
   },
   "keywords": [],
