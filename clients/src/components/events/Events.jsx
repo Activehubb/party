@@ -4,14 +4,12 @@ import "./event.scss";
 import { Map } from "../../utils/Map";
 import { getEvents } from "../../redux/apiCalls/eventApiCalls";
 import { useSelector, useDispatch } from "react-redux";
-import { useAlert } from "react-alert";
 import Loader from "../../widget/loader/Loader";
 
 const Events = () => {
   const arr = [
     1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
   ];
-  const alert = useAlert();
 
   const dispatch = useDispatch();
 

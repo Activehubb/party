@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
 import { useNavigate } from "react-router-dom";
 import { clearUserError, loginUser } from "../redux/apiCalls/userApiCalls";
 import Footer from "../components/footer/Footer";
+import { Alert } from "@mui/material";
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const alert = useAlert();
   const { user, pending, error } = useSelector((state) => state.user);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,10 +18,11 @@ const Login = () => {
     }
 
     if (error) {
-      alert.error(error);
-      clearUserError();
+      <Alert variant="outlined" severity="info">
+       {error}
+      </Alert>;
     }
-  }, [user, alert, error]);
+  }, [user, error]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

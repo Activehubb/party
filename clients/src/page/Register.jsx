@@ -2,26 +2,27 @@ import React, { useEffect, useState } from "react";
 import { clearUserError, registerUser } from "../redux/apiCalls/userApiCalls";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import { useAlert } from "react-alert";
 import Footer from "../components/footer/Footer";
+import { Alert } from "@mui/material";
 
 const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const alert = useAlert();
   const { user, error, pending } = useSelector((state) => state.user);
   const [avatar, setAvatar] = useState("");
   const [avatarPreview, setAvatarPreview] = useState("");
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
+      <Alert variant="outlined" severity="info">
+        {error}
+      </Alert>;
       clearUserError(dispatch);
     }
     if (user) {
       navigate("/event/create");
     }
-  }, [alert, navigate, error, user]);
+  }, [ navigate, error, user]);
 
   const [userInfo, setUserInfo] = useState({
     email: "",

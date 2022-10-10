@@ -55,9 +55,12 @@ const Header = () => {
             </button>
           </div>
           <ul className="flex items-center header-list">
-            {headerOne.map((item) => (
+            {headerOne.map((item, idx) => (
               <>
-                <li className="relative hover:bg-slate-50 py-4 px-3 justify-center hidden lg:block ">
+                <li
+                  key={idx}
+                  className="relative hover:bg-slate-50 py-4 px-3 justify-center hidden lg:block "
+                >
                   <Link
                     to={`/${item.txtLink}`}
                     aria-hidden="true"
@@ -73,9 +76,10 @@ const Header = () => {
             </li>
             {!user ? (
               <>
-                {headerTwo.map((item) => (
+                {headerTwo.map((item, idx) => (
                   <>
                     <Link
+                      key={idx}
                       to={item.txtLink}
                       className=" hover:bg-slate-50 p-4  "
                     >

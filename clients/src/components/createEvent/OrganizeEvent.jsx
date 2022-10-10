@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useAlert } from "react-alert";
 import {
   clearEventError,
   createEvents,
@@ -11,11 +10,11 @@ import Time from "../../widget/organizeEvent/Time";
 import Footer from "../footer/Footer";
 import { useNavigate } from "react-router-dom";
 import { MetaData } from "../../utils/MetaData";
+import { Alert } from "@mui/material";
 
 const OrganizeEvent = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const alert = useAlert();
   const { pending, error, createEvent } = useSelector((state) => state.events);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
@@ -46,10 +45,10 @@ const OrganizeEvent = () => {
 
   useEffect(() => {
     if (error) {
-      alert.error(error);
-      clearEventError(dispatch);
+      <Alert variant="outlined" severity="error">
+        {error}
+      </Alert>;
     }
-
   }, [dispatch, error, alert]);
 
   if (createEvent) {
