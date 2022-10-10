@@ -1,0 +1,18 @@
+.header {
+&-list {
+}
+
+  &-right {
+    width: calc(100% - 3.5rem);
+  }
+  .sidebar:hover {
+    width: 16rem;
+  }
+  @media only screen and (min-width: 768px) {
+    &-right {
+      width: calc(100% - 16rem);
+    }
+  }
+
+
+}
