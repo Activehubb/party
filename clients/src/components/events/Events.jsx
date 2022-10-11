@@ -7,9 +7,9 @@ import { useSelector, useDispatch } from "react-redux";
 import Loader from "../../widget/loader/Loader";
 
 const Events = () => {
-  const arr = [
-    1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  ];
+  // const arr = [
+  //   1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  // ];
 
   const dispatch = useDispatch();
 

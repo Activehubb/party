@@ -43,19 +43,18 @@ const OrganizeEvent = () => {
     endTime,
   } = eventInfo;
 
-  useEffect(() => {
-    if (error) {
+  if (error) {
+    return (
       <Alert variant="outlined" severity="error">
         {error}
-      </Alert>;
-    }
-  }, [dispatch, error, alert]);
+      </Alert>
+    );
+  }
 
   if (createEvent) {
     navigate(`/event/details/${createEvent.newEvent._id}`);
   }
 
-  // console.log(createEvent.newEvent._id);
   const handleHideTime = () => {
     setHideEndTime(!hideEndTime);
   };
@@ -63,8 +62,6 @@ const OrganizeEvent = () => {
   const handleChange = (e) => {
     setEventInfo({ ...eventInfo, [e.target.name]: e.target.value });
   };
-
-  // console.log(eventInfo, startDate, endDate, hideEndTime);
 
   const handleSubmit = (e) => {
     e.preventDefault();

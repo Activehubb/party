@@ -12,7 +12,7 @@ export const Map = () => {
       setLat(position.coords.latitude);
       setLong(position.coords.longitude);
     });
-    return () => navigate();
+    return () => navigate;
   }, []);
 
   const { isLoaded } = useJsApiLoader({
@@ -28,7 +28,7 @@ export const Map = () => {
   const center = { lat: parseFloat(lat), lng: parseFloat(long) };
   return (
     <div>
-      <div class="grid mb-8 rounded-lg border border-gray-200 w-[720px] h-[480px] shadow-sm dark:border-gray-700 ">
+      <div className="grid mb-8 rounded-lg border border-gray-200 w-[720px] h-[480px] shadow-sm dark:border-gray-700 ">
         <GoogleMap
           center={center}
           zoom={15}

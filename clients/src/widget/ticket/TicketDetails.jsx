@@ -1,10 +1,32 @@
 import React, { useState } from "react";
 import { HiOutlineChevronDown } from "react-icons/hi";
 
-const TicketDetails = () => {
-  const [paid, setPaid] = useState(true);
-  const [free, setFree] = useState(false);
-  const [donation, setDonation] = useState(false);
+const TicketDetails = ({
+  paid,
+  free,
+  donation,
+  ticketName,
+  ticketQuantity,
+  hideTicketEndDate,
+  sethideTicketEndDate,
+  price,
+  ticketDesc,
+  ticketVisibility,
+  ticketMinValue,
+  ticketMaxValue,
+  ticketEndDate,
+  ticketStartDate,
+  ticketEndTime,
+  ticketStartTime,
+  handleChange,
+  setDonation,
+  setFree,
+  setPaid,
+}) => {
+  const [settings, setSettings] = useState(false);
+  const handleSetting = () => {
+    setSettings(!settings);
+  };
   return (
     <div>
       <div className="shadow">
@@ -68,12 +90,15 @@ const TicketDetails = () => {
               </label>
               <input
                 type="text"
+                value={ticketName}
+                name={"ticketName"}
+                onChange={handleChange}
                 className="w-full border-none outline-none font-roboto text-sm"
                 placeholder="e.g VIP, General Admission, Guest"
               />
             </div>
             <small className="absolute right-[20px] top-[184px] pt-2 font-roboto text-sm">
-              0/50
+              {ticketName.length/50}
             </small>
             <div>
               <div className="border p-2 my-8 focus:border-indigo-500">
@@ -86,6 +111,9 @@ const TicketDetails = () => {
                 </label>
                 <input
                   type="text"
+                  value={ticketQuantity}
+                  name={"ticketQuantity"}
+                  onChange={handleChange}
                   className="w-full border-none outline-none font-roboto text-sm"
                   placeholder="e.g Quantity of tickets per capacity"
                 />
@@ -94,14 +122,18 @@ const TicketDetails = () => {
             <div>
               <div className="border p-2 my-8 focus:border-indigo-500">
                 <label
-                  htmlFor=""
+                  htmlFor="price"
                   required
                   className="block text-xs text-[#39364f] font-roboto "
                 >
                   Price ($)
                 </label>
                 <input
+                  id="price"
                   type="text"
+                  name="price"
+                  value={price}
+                  onChange={handleChange}
                   className="w-full border-none outline-none font-roboto text-sm"
                   placeholder="0.00"
                 />
@@ -112,15 +144,18 @@ const TicketDetails = () => {
               <div className="flex w-full gap-2">
                 <div className="border px-4 py-2 focus:border-indigo-500 w-full">
                   <label
-                    htmlFor=""
+                    htmlFor="startTime"
                     required
                     className="block text-xs text-[#39364f] font-roboto "
                   >
-                    Party start time
+                    Ticket start time
                   </label>
                   <input
+                    id="startTime"
                     type="time"
-                    // value={startDate}
+                    value={ticketStartTime}
+                    name={"ticketStartTime"}
+                    onChange={handleChange}
                     className="w-full border-none outline-none font-roboto text-sm "
                     placeholder="Be clear and descriptive"
                   />
@@ -131,11 +166,14 @@ const TicketDetails = () => {
                     required
                     className="block text-xs text-[#39364f] font-roboto "
                   >
-                    Party end time
+                    Ticket end time
                   </label>
                   <input
                     type="time"
                     id="endTime"
+                    name="ticketEndTime"
+                    value={ticketEndTime}
+                    onChange={handleChange}
                     className="w-full border-none outline-none font-roboto text-sm"
                     placeholder="Be clear and descriptive"
                   />
@@ -144,15 +182,17 @@ const TicketDetails = () => {
               <div className="flex w-full gap-2 mt-2">
                 <div className="border px-4 py-2 focus:border-indigo-500 w-full">
                   <label
-                    htmlFor=""
+                    htmlFor="startDate"
                     required
                     className="block text-xs text-[#39364f] font-roboto "
                   >
-                    Party starts date
+                    Ticket starts date
                   </label>
                   <input
+                    id="startDate"
                     type="text"
-                    // value={startDate}
+                    name="ticketStartDate"
+                    value={ticketStartDate}
                     className="w-full border-none outline-none font-roboto text-sm "
                     placeholder="Be clear and descriptive"
                   />
@@ -163,23 +203,29 @@ const TicketDetails = () => {
                     required
                     className="block text-xs text-[#39364f] font-roboto "
                   >
-                    Part end date
+                    Ticket end date
                   </label>
                   <input
                     type="text"
                     id="endDate"
-                    // value={endDate}
+                    name="ticketEndDate"
+                    value={ticketEndDate}
+                    onChange={handleChange}
                     className="w-full border-none outline-none font-roboto text-sm"
                     placeholder="Be clear and descriptive"
                   />
                 </div>
               </div>
             </div>
-
-            <div className="border flex gap-4 mt-8 items-center p-2">
+            <div className="border flex gap-4 items-center p-2 mt-2">
               <input
                 type="checkbox"
                 id="start"
+                value={hideTicketEndDate}
+                onClick={() => {
+                  sethideTicketEndDate(!hideTicketEndDate);
+                }}
+                name="hideTicketEndTime"
                 className="h-6 w-6 border  checked:bg-blue-600 checked:scale-75 transition-all duration-200 peer rounded checked:border-blue-600 border-gray-300 bg-white"
               />
               <div>
@@ -188,7 +234,7 @@ const TicketDetails = () => {
                   required
                   className="block text-sm text-[#39364f] font-roboto font-medium"
                 >
-                  Display start time.
+                  Display end time.
                 </label>
                 <small className="block text-xs text-[#39364f] font-roboto ">
                   {" "}
@@ -198,7 +244,10 @@ const TicketDetails = () => {
             </div>
 
             <div>
-              <div className="flex my-8 justify-between items-center">
+              <div
+                onClick={handleSetting}
+                className="flex cursor-pointer my-8 justify-between items-center"
+              >
                 <label
                   htmlFor="start"
                   required
@@ -211,74 +260,87 @@ const TicketDetails = () => {
             </div>
 
             <hr />
+            {settings && (
+              <>
+                <div className="border px-4 py-2 my-8 focus:border-indigo-500 w-full">
+                  <label
+                    htmlFor=""
+                    required
+                    className="block text-xs text-[#39364f] font-roboto "
+                  >
+                    Ticket Description
+                  </label>
+                  <textarea
+                    cols="50"
+                    rows="3"
+                    name="ticketDesc"
+                    value={ticketDesc}
+                    onChange={ticketDesc}
+                    className="w-full  border-none outline-none font-roboto text-sm "
+                    placeholder="Be clear and descriptive"
+                  />
+                </div>
+                <div className="border px-4 py-2 my-8 focus:border-indigo-500 w-full">
+                  <label
+                    htmlFor="visibility"
+                    required
+                    className="block text-xs text-[#39364f] font-roboto "
+                  >
+                    Ticket Visibility
+                  </label>
+                  <select
+                    id="visiblity"
+                    name="ticketVisibility"
+                    value={ticketVisibility}
+                    onChange={handleChange}
+                    class=" w-full border-none outline-none font-roboto text-sm cursor-pointer"
+                  >
+                    <option value="organizer">Visible</option>
+                    <option value="organizer">Hidden</option>
+                  </select>
+                </div>
 
-            <div className="border px-4 py-2 my-8 focus:border-indigo-500 w-full">
-              <label
-                htmlFor=""
-                required
-                className="block text-xs text-[#39364f] font-roboto "
-              >
-                Description
-              </label>
-              <textarea
-                cols="50"
-                rows="3"
-                // value={startDate}
-                className="w-full  border-none outline-none font-roboto text-sm "
-                placeholder="Be clear and descriptive"
-              />
-            </div>
-            <div className="border px-4 py-2 my-8 focus:border-indigo-500 w-full">
-              <label
-                htmlFor="visibility"
-                required
-                className="block text-xs text-[#39364f] font-roboto "
-              >
-                Visibility
-              </label>
-              <select
-                id="visiblity"
-                class=" w-full border-none outline-none font-roboto text-sm cursor-pointer"
-              >
-                <option value="organizer">Visible</option>
-                <option value="organizer">Hidden</option>
-              </select>
-            </div>
-
-            <div className="flex w-full gap-2 mt-2">
-              <div className="border px-4 py-2 focus:border-indigo-500 w-full">
-                <label
-                  htmlFor=""
-                  required
-                  className="block text-xs text-[#39364f] font-roboto "
-                >
-                  Minimum quantity
-                </label>
-                <input
-                  type="number"
-                  defaultValue={1}
-                  // value={startDate}
-                  className="w-full border-none outline-none font-roboto text-sm "
-                  placeholder="Be clear and descriptive"
-                />
-              </div>
-              <div className="border p-2 w-full focus:border-indigo-500">
-                <label
-                  htmlFor="max quantity"
-                  required
-                  className="block text-xs text-[#39364f] font-roboto "
-                >
-                  Maximum Quantity{" "}
-                </label>
-                <input
-                  type="number"
-                  id="max qauntity"
-                  defaultValue={5}
-                  className="w-full border-none outline-none font-roboto text-sm"
-                  placeholder="Be clear and descriptive"
-                />
-              </div>
-            </div>
+                <div className="flex w-full gap-2 mt-2">
+                  <div className="border px-4 py-2 focus:border-indigo-500 w-full">
+                    <label
+                      htmlFor=""
+                      required
+                      className="block text-xs text-[#39364f] font-roboto "
+                    >
+                      Minimum quantity
+                    </label>
+                    <input
+                      type="number"
+                      name="ticketMinValue"
+                      value={ticketMinValue}
+                      onChange={handleChange}
+                      defaultValue={1}
+                      className="w-full border-none outline-none font-roboto text-sm "
+                      placeholder="Be clear and descriptive"
+                    />
+                  </div>
+                  <div className="border p-2 w-full focus:border-indigo-500">
+                    <label
+                      htmlFor="max quantity"
+                      required
+                      className="block text-xs text-[#39364f] font-roboto "
+                    >
+                      Maximum Quantity{" "}
+                    </label>
+                    <input
+                      type="number"
+                      id="max qauntity"
+                      name="ticketMaxValue"
+                      value={ticketMaxValue}
+                      onChange={handleChange}
+                      defaultValue={5}
+                      className="w-full border-none outline-none font-roboto text-sm"
+                      placeholder="Be clear and descriptive"
+                    />
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

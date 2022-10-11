@@ -37,9 +37,21 @@ export const updateEvent = async (event, id, dispatch) => {
   dispatch(eventPending());
 
   try {
-    const res = await axios.put(`/api/v1/create/${id}`, event);
+    const res = await axios.put(`/api/v1/event/update/${id}`, event);
 
     dispatch(updateEventSuccess(res.data));
+  } catch (error) {
+    dispatch(eventError(error.response.data.message));
+  }
+};
+
+export const delEvent = async ( id, dispatch) => {
+  dispatch(eventPending());
+
+  try {
+    const res = await axios.delete(`/api/v1/event/delete/${id}`);
+
+    dispatch(updateEventSuccess(res));
   } catch (error) {
     dispatch(eventError(error.response.data.message));
   }

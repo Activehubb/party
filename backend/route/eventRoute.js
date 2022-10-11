@@ -21,12 +21,12 @@ router
   );
 router
   .route("/event/update/:id")
-  .put(isAuthenticated, authorizedRoles("admin", "editor"), updateEvent);
+  .put(isAuthenticated, authorizedRoles("admin", "editor", "user"), updateEvent);
 router
   .route("/event/delete/:id")
-  .delete(isAuthenticated, authorizedRoles("admin", "editor"), deleteEventById);
+  .delete(isAuthenticated, authorizedRoles("admin", "editor", "user"), deleteEventById);
 router
   .route("/event/delete")
-  .delete(isAuthenticated, authorizedRoles("admin", "editor"), deleteAllEvent);
+  .delete(isAuthenticated, authorizedRoles("admin", "editor", "user"), deleteAllEvent);
 
 module.exports = router;

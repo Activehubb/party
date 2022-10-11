@@ -1,33 +1,28 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { clearUserError, loginUser } from "../redux/apiCalls/userApiCalls";
+import { loginUser } from "../redux/apiCalls/userApiCalls";
 import Footer from "../components/footer/Footer";
-import { Alert } from "@mui/material";
+import { Alert, Snackbar } from "@mui/material";
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user, pending, error } = useSelector((state) => state.user);
+  const { user, pending, isError, error } = useSelector((state) => state.user);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  useEffect(() => {
-    if (user) {
-      navigate("/dashboard");
-    }
-
-    if (error) {
-      <Alert variant="outlined" severity="info">
-       {error}
-      </Alert>;
-    }
-  }, [user, error]);
+  const [open, setOpen] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     loginUser({ email, password }, dispatch);
   };
+  if (user) {
+    navigate("/dashboard");
+  }
+  const handleClose = () => setOpen(false);
+
+  console.log(error, isError);
 
   return (
     <div>
@@ -63,6 +58,18 @@ const Login = () => {
                 </legend>
               </fieldset>
             </div>
+
+            {error && (
+              <Alert
+                className="my-4"
+                onClose={handleClose}
+                severity="error"
+                sx={{ width: "100%" }}
+              >
+                {error}
+              </Alert>
+            )}
+
             <div class="mt-10">
               <form onSubmit={handleSubmit}>
                 <div>
@@ -86,6 +93,7 @@ const Login = () => {
                     type="password"
                     id="password"
                     value={password}
+                    required
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="***********"
                     class="inline-block w-full border-[#39364f47] border-solid rounded border bg-white p-2.5 leading-none text-black placeholder:placeholder-indigo-900 shadow"
@@ -104,6 +112,7 @@ const Login = () => {
                     </a>
                   </div>
                 </div>
+
                 {!pending ? (
                   <>
                     <div class="my-10">

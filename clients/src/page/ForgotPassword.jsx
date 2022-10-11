@@ -1,28 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { clearUserError, forgotPassword } from "../redux/apiCalls/userApiCalls";
+// import { useNavigate } from "react-router-dom";
+import {forgotPassword } from "../redux/apiCalls/userApiCalls";
 import Footer from "../components/footer/Footer";
 import { Alert } from "@mui/material";
 
 const ForgotPassword = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { user, pending, error } = useSelector((state) => state.user);
+  // const navigate = useNavigate();
+  const {  pending, error } = useSelector((state) => state.user);
   const [email, setEmail] = useState("");
 
-  useEffect(() => {
-    if (user) {
-      navigate();
-    }
-
-    if (error) {
-     <Alert variant="outlined" severity="info">
-       This is an info alert — check it out!
-     </Alert>;
-      clearUserError();
-    }
-  }, [user, error]);
+  if (error) {
+    return (
+      <Alert variant="outlined" severity="info">
+        This is an info alert — check it out!
+      </Alert>
+    );
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();

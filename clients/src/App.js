@@ -18,7 +18,7 @@ function App() {
   // const { user } = useSelector((state) => state.user);
   useEffect(() => {
     loadUser(dispatch);
-  }, []);
+  }, [dispatch]);
 
   return (
     <Fragment>

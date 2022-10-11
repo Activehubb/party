@@ -23,6 +23,7 @@ const Header = () => {
           <img
             className="w-12 h-12 md:w-10 md:h-10 mr-2 rounded-md overflow-hidden"
             src={partymode}
+            alt="logo"
           />
           <span className="hidden md:block text-[#F84B05] font-bold text-lg">
             PartyMode
@@ -57,11 +58,9 @@ const Header = () => {
           <ul className="flex items-center header-list">
             {headerOne.map((item, idx) => (
               <>
-                <li
-                  key={idx}
-                  className="relative hover:bg-slate-50 py-4 px-3 justify-center hidden lg:block "
-                >
+                <li className="relative hover:bg-slate-50 py-4 px-3 justify-center hidden lg:block ">
                   <Link
+                    key={item}
                     to={`/${item.txtLink}`}
                     aria-hidden="true"
                     className={`group p-2 font-roboto font-semibold text-sm text-${item.color} transition-colors duration-200  dark:hover:bg-gray-200 focus:outline-none`}
@@ -79,8 +78,8 @@ const Header = () => {
                 {headerTwo.map((item, idx) => (
                   <>
                     <Link
-                      key={idx}
-                      to={item.txtLink}
+                      key={item}
+                      to={`/${item.txtLink}`}
                       className=" hover:bg-slate-50 p-4  "
                     >
                       <li
@@ -95,9 +94,13 @@ const Header = () => {
               </>
             ) : (
               <>
-                <div className="bg-orange-600 flex items-center p-2 px-6 rounded-md shadow-md">
-                  <img src="" alt="avatar" className="w-8 h-8 rounded-full" />
-                  <h3>{user.fname}</h3>
+                <div className="bg-orange-600 flex gap-4 items-center p-2 px-6 rounded-md shadow-md">
+                  <img
+                    src={user.user.avatar.url}
+                    alt="avatar"
+                    className="w-8 h-8 rounded-full"
+                  />
+                  <h3>{user.user.fname + user.user.lname}</h3>
                 </div>
               </>
             )}

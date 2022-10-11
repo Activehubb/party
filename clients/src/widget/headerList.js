@@ -29,17 +29,17 @@ export const trendList = [
   { txt: "Charity & Courses", txtLink: "", color: "gray-900" },
 ];
 export const footerList = [
-  { txt: "How it works", txtLink: "" },
-  { txt: "Pricing", txtLink: "" },
-  { txt: "Contact Support", txtLink: "" },
-  { txt: "Contact Sales", txtLink: "" },
-  { txt: "About", txtLink: "" },
-  { txt: "Blog", txtLink: "" },
-  { txt: "Help", txtLink: "" },
-  { txt: "Careers", txtLink: "" },
-  { txt: "Press", txtLink: "" },
-  { txt: "Investors", txtLink: "" },
-  { txt: "Security", txtLink: "" },
+  { txt: "How it works", txtLink: "how it works" },
+  { txt: "Pricing", txtLink: "pricing" },
+  { txt: "Contact Support", txtLink: "contact support" },
+  { txt: "Contact Sales", txtLink: "contact sales" },
+  { txt: "About", txtLink: "about" },
+  { txt: "Blog", txtLink: "blog" },
+  { txt: "Help", txtLink: "help" },
+  { txt: "Careers", txtLink: "careers" },
+  { txt: "Press", txtLink: "press" },
+  { txt: "Investors", txtLink: "investors" },
+  { txt: "Security", txtLink: "security" },
 ];
 export const eventTypeList = [
   { txt: "Type" },

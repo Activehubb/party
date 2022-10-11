@@ -19,7 +19,7 @@ const eventSchema = new Schema(
     description: {
       type: String,
     },
-    
+
     primaryEventAvatar: {
       public_id: {
         type: String,
@@ -37,7 +37,60 @@ const eventSchema = new Schema(
         type: String,
       },
     },
-
+    ticket: {
+      ticketName: {
+        type: String,
+      },
+      ticketQuantity: {
+        type: Number,
+        default: 0,
+      },
+      ticketDesc: {
+        type: String,
+      },
+      ticketVisibility: {
+        type: String,
+      },
+      ticketMinValue: {
+        type: Number,
+        default: 0,
+      },
+      hideTicketEndDate: {
+        type: Boolean,
+        default: false,
+      },
+      ticketMaxValue: {
+        type: Number,
+        default: 1,
+      },
+      ticketEndDate: {
+        type: String,
+      },
+      ticketStartDate: {
+        type: String,
+      },
+      ticketStartTime: {
+        type: String,
+      },
+      ticketEndTime: {
+        type: String,
+      },
+      price: {
+        type: String,
+      },
+      paid: {
+        type: Boolean,
+        default: false,
+      },
+      free: {
+        type: Boolean,
+        default: false,
+      },
+      donation: {
+        type: Boolean,
+        default: false,
+      },
+    },
     location: { type: String },
     preVideoLink: { type: String },
     eventType: {

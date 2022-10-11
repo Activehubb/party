@@ -99,7 +99,7 @@ const SingleEvent = () => {
                 About this party
               </h1>
 
-              <img src={monday} className="lg:w-[720px] h-[480px]" />
+              <img src={monday} alt="" className="lg:w-[720px] h-[480px]" />
               <p className="py-4 text-justify text-[#39364f] font-roboto text-lg lg:w-[60%]">
                 AFEC is an African project for different African countries like
                 Kenya, Ghana, Nigeria, zimbabwe, South Africa, and many more,
@@ -120,7 +120,7 @@ const SingleEvent = () => {
                 <video src="https://youtu.be/mHiWRWRYAZ4" controls={true} />
               </div> */}
               <div className="py-8 font-roboto text-gray-600">
-                <img src={mondayy} className="lg:w-[720px] aspect-[3/2] lg:h-[480px]" />
+                <img src={mondayy} alt="" className="lg:w-[720px] aspect-[3/2] lg:h-[480px]" />
                 <h2 className="text-xl py-4">OUR INFORMATION</h2>
                 <h3 className="text-base py-4">
                   Website: www.afeconference.com

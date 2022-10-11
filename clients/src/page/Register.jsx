@@ -1,35 +1,25 @@
-import React, { useEffect, useState } from "react";
-import { clearUserError, registerUser } from "../redux/apiCalls/userApiCalls";
+import React, { useState } from "react";
+import { registerUser } from "../redux/apiCalls/userApiCalls";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import Footer from "../components/footer/Footer";
-import { Alert } from "@mui/material";
+import { Alert, Snackbar } from "@mui/material";
 
 const Register = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { user, error, pending } = useSelector((state) => state.user);
+  const { user, error, isError, pending } = useSelector((state) => state.user);
   const [avatar, setAvatar] = useState("");
+  const [open, setOpen] = useState(isError);
   const [avatarPreview, setAvatarPreview] = useState("");
-
-  useEffect(() => {
-    if (error) {
-      <Alert variant="outlined" severity="info">
-        {error}
-      </Alert>;
-      clearUserError(dispatch);
-    }
-    if (user) {
-      navigate("/event/create");
-    }
-  }, [ navigate, error, user]);
-
   const [userInfo, setUserInfo] = useState({
     email: "",
     fname: "",
     lname: "",
     password: "",
   });
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleClose = () => setOpen(false);
 
   const { email, fname, lname, password } = userInfo;
 
@@ -62,6 +52,10 @@ const Register = () => {
 
     registerUser(formData, dispatch);
   };
+
+  if (user) {
+    navigate("/event/create");
+  }
 
   return (
     <div>
@@ -104,6 +98,18 @@ const Register = () => {
                     />
                   )}
                 </div>
+
+                {error && (
+                  <Alert
+                    className="my-4"
+                    onClose={handleClose}
+                    severity="error"
+                    sx={{ width: "100%" }}
+                  >
+                    {error}
+                  </Alert>
+                )}
+
                 <form onSubmit={handleSubmit} encType=" multipart/form-data">
                   <div>
                     <label
@@ -180,6 +186,7 @@ const Register = () => {
                         className="inline-block w-full border-[#39364f47] border-solid rounded border bg-white p-2.5 leading-none text-black placeholder:placeholder-indigo-900 shadow"
                       />
                     </div>
+                    
                     {password && (
                       <div className=" z-10  ">
                         {!avatarPreview && (

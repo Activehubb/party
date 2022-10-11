@@ -6,6 +6,7 @@ export const userReducer = createSlice({
     user: null,
     pending: false,
     error: false,
+    isError: false,
     clearError: false,
   },
 
@@ -20,7 +21,6 @@ export const userReducer = createSlice({
     loadUserFailure: (state, action) => {
       state.pending = null;
       state.user = null;
-      state.error = action.payload;
     },
     regUserRequest: (state) => {
       state.pending = true;
@@ -42,6 +42,8 @@ export const userReducer = createSlice({
     },
     loginUserFailure: (state, action) => {
       state.pending = null;
+      state.user = null;
+      state.isError = true;
       state.error = action.payload;
     },
     clearErrorState: (state) => {
