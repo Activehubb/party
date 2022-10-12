@@ -1,6 +1,5 @@
 export const headerOne = [
   { txt: "Browse events", txtLink: "find", color: "indigo-500" },
-  { txt: "Organize an event", txtLink: "event", color: "indigo-500" },
   { txt: "Organize", txtLink: "", color: "gray-900" },
   { txt: "Help", txtLink: "", color: "gray-900" },
 ];

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../redux/apiCalls/userApiCalls";
 import Footer from "../components/footer/Footer";
 import { Alert, Snackbar } from "@mui/material";
@@ -150,10 +150,18 @@ const Login = () => {
                     </button>
                   </div>
                 )}
+
+                <div className="container m-auto">
+                  <p className="font-roboto font-medium text-base">
+                    Don't have an account yet <Link to="/signup" className="text-orange-600">Sign up</Link>{" "}
+                    here
+                  </p>
+                </div>
               </form>
             </div>
           </div>
         </div>
+
         <div class="h-screen w-1/2 bg-blue-600 hidden lg:block">
           <img
             src="https://images.pexels.com/photos/2523959/pexels-photo-2523959.jpeg"

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import Footer from "../components/footer/Footer";
 import { Alert, Snackbar } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const { user, error, isError, pending } = useSelector((state) => state.user);
@@ -186,7 +187,7 @@ const Register = () => {
                         className="inline-block w-full border-[#39364f47] border-solid rounded border bg-white p-2.5 leading-none text-black placeholder:placeholder-indigo-900 shadow"
                       />
                     </div>
-                    
+
                     {password && (
                       <div className=" z-10  ">
                         {!avatarPreview && (
@@ -266,6 +267,16 @@ const Register = () => {
                       </button>
                     </div>
                   )}
+
+                  <div className="container m-auto">
+                    <p className="font-roboto font-medium text-base">
+                      Already have an account {" "}
+                      <Link to="/signin" className="text-orange-600">
+                        Sign in
+                      </Link>{" "}
+                      here
+                    </p>
+                  </div>
                 </form>
               </div>
             </div>

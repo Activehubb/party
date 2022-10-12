@@ -13,7 +13,8 @@ const EventDetails = () => {
   const [secEventAvatar, setSecEventAvatar] = useState("");
   const [secEventAvatarPreview, setSecEventAvatarPreview] = useState("");
   const [primaryEventAvatar, setPrimaryEventAvatar] = useState("");
-  const [primaryEventAvatarPreview, setPrimaryEventAvatarPreview] = useState("");
+  const [primaryEventAvatarPreview, setPrimaryEventAvatarPreview] =
+    useState("");
   const [eventDetails, setEventDetails] = useState({
     summary: "",
     preVideoLink: "",
@@ -57,11 +58,17 @@ const EventDetails = () => {
     updateEvent(formData, path, dispatch);
   };
 
+  const handleCancel = (e) => {
+    setEventDetails("");
+    setPrimaryEventAvatar("");
+    setSecEventAvatar("");
+  };
+
   return (
     <div>
       <Header />
-      <div className="container m-auto px-4 lg:px-[20rem] mb-48 lg:mb-32">
-        <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
+        <div className="container m-auto px-4 lg:px-[20rem] mb-48 lg:mb-32">
           <EventDetail
             handleChange={handleChange}
             secEventAvatarPreview={secEventAvatarPreview}
@@ -72,19 +79,25 @@ const EventDetails = () => {
             summary={summary}
           />
           <hr className="my-8" />
-        </form>
-      </div>
-      <div className="mt-24 fixed bottom-0 bg-white w-full ">
-        <div className="p-2 lg:mb-12 lg:flex lg:gap-4 relative border-t">
-          <button className="border lg:w-60 lg:absolute lg:right-10 border-gray-500 mt-2 px-12 py-2 rounded w-full font-roboto font-medium text-sm bg-orange-600 text-white">
-            Save & Continue
-          </button>
-          <button className="border lg:absolute lg:right-80 lg:w-60 border-gray-500 mt-2 px-12 py-2 rounded w-full font-roboto font-medium text-sm">
-            Discard
-          </button>
         </div>
-        <Footer />
-      </div>
+        <div className="mt-24 fixed bottom-0 bg-white w-full ">
+          <div className="p-2 lg:mb-12 lg:flex lg:gap-4 relative border-t">
+            <button
+              type="submit"
+              className="border lg:w-60 lg:absolute lg:right-10 border-gray-500 mt-2 px-12 py-2 rounded w-full font-roboto font-medium text-sm bg-orange-600 text-white"
+            >
+              Save & Continue
+            </button>
+            <button
+              onClick={handleCancel}
+              className="border lg:absolute lg:right-80 lg:w-60 border-gray-500 mt-2 px-12 py-2 rounded w-full font-roboto font-medium text-sm"
+            >
+              Discard
+            </button>
+          </div>
+          <Footer />
+        </div>
+      </form>
     </div>
   );
 };
